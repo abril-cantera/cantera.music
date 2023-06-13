@@ -18,13 +18,13 @@ export function Search() {
   const [search, setSearch] = useState('')
   const [isloading, setIsLoading] = useState(true);
 
-  const url = "http://18.117.98.49:5000/api/v1/files";
+  const url = "https://cantera-music-server.onrender.com/api/v1/files";
 
   useEffect(() => {
     fetch(url)
       .then(res => res.json())
       .then((data) => {
-        data.sort(() => {return Math.random() - 0.5})
+        data.sort(() => { return Math.random() - 0.5 })
         setFiles(data)
         setFilesSearch(data)
         setSuggesting(data)

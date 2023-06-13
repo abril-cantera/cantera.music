@@ -8,7 +8,7 @@ import { FooterMenu } from "../components/FooterMenu";
 import "../styles/Home.css";
 
 export function Home() {
-  const url = "http://18.117.98.49:5000/api/v1/categories/1";
+  const url = "https://cantera-music-server.onrender.com/api/v1/categories/1";
 
   const [api, setApi] = useState([]);
   const [seeModal, setSeeModal] = useState(false);
@@ -31,7 +31,7 @@ export function Home() {
         }
       })
       .then((data) => {
-        data.files.sort(()=>{ return Math.random() - 0.5 })
+        data.files.sort(() => { return Math.random() - 0.5 })
         setApi(data.files);
         setIsLoading(false);
       });

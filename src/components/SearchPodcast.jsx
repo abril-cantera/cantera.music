@@ -7,13 +7,13 @@ export function SearchPodcast() {
   const [podcasts, setPodcasts] = useState([])
   const [isloading, setIsLoading] = useState(true);
 
-  const url = 'http://18.117.98.49:5000/api/v1/categories/2'
+  const url = 'https://cantera-music-server.onrender.com/api/v1/categories/2'
 
   useEffect(() => {
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
-        data.files.sort(() => {return Math.random() - 0.5})
+        data.files.sort(() => { return Math.random() - 0.5 })
         setPodcasts(data.files)
         setIsLoading(false)
       })
@@ -36,7 +36,7 @@ export function SearchPodcast() {
             </div>
           </Link>
         )
-      }). slice(0, 5)}
+      }).slice(0, 5)}
     </div>
   );
 }

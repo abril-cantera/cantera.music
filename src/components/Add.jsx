@@ -27,56 +27,56 @@ export function Add({ see, notSee }) {
 
   useEffect(() => {
     //obtengo las categorías
-    fetch('http://18.117.98.49:5000/api/v1/categories')
+    fetch('https://cantera-music-server.onrender.com/api/v1/categories')
       .then(response => response.json())
       .then(data => setCategories(data))
   }, []);
 
   useEffect(() => {
     //obtengo los géneros
-    fetch('http://18.117.98.49:5000/api/v1/genders')
+    fetch('https://cantera-music-server.onrender.com/api/v1/genders')
       .then(response => response.json())
       .then(data => setGenders(data))
   }, []);
 
   const validateForm = () => {
-  let formIsValid = true;
-  const newErrors = {};
+    let formIsValid = true;
+    const newErrors = {};
 
-  //validar campo nombre
-  //trim() hace que si hay solo espacios en blanco los elimina
-  if (!nameFile.trim()) {
-    formIsValid = false;
-    newErrors.nameFile = 'El campo Nombre es obligatorio.';
-  }
+    //validar campo nombre
+    //trim() hace que si hay solo espacios en blanco los elimina
+    if (!nameFile.trim()) {
+      formIsValid = false;
+      newErrors.nameFile = 'El campo Nombre es obligatorio.';
+    }
 
-  //validar campo artista / autor
-  if (!nameAuthor.trim()) {
-    formIsValid = false;
-    newErrors.nameAuthor = 'El campo Artista / Autor es obligatorio.';
-  }
+    //validar campo artista / autor
+    if (!nameAuthor.trim()) {
+      formIsValid = false;
+      newErrors.nameAuthor = 'El campo Artista / Autor es obligatorio.';
+    }
 
-  //validar campo categorías
-  if (!category) {
-    formIsValid = false;
-    newErrors.category = 'Debes seleccionar una categoría.';
-  }
+    //validar campo categorías
+    if (!category) {
+      formIsValid = false;
+      newErrors.category = 'Debes seleccionar una categoría.';
+    }
 
-  //validar campo géneros
-  if (!genres) {
-    formIsValid = false;
-    newErrors.genres = 'Debes seleccionar un género.';
-  }
+    //validar campo géneros
+    if (!genres) {
+      formIsValid = false;
+      newErrors.genres = 'Debes seleccionar un género.';
+    }
 
-  //validar campo archivo
-  if (!file) {
-    formIsValid = false;
-    newErrors.file = 'Debes seleccionar un audio.';
-  }
+    //validar campo archivo
+    if (!file) {
+      formIsValid = false;
+      newErrors.file = 'Debes seleccionar un audio.';
+    }
 
-  setErrors(newErrors);
-  return formIsValid;
-};
+    setErrors(newErrors);
+    return formIsValid;
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -92,7 +92,7 @@ export function Add({ see, notSee }) {
     formData.append('file', file);
     formData.append('fileUrl', fileUrl);
 
-    const url = 'http://18.117.98.49:5000/api/v1/files/upload';
+    const url = 'https://cantera-music-server.onrender.com/api/v1/files/upload';
 
     if (validateForm()) {
       fetch(url, {
